@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 const styles = {
-    display: 'grid',
-    gridTemplateColumns:
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start'
 }
 
 const Page = (props) => {
     return (
-        <div>
+        <div style={styles}>
             Here is a page
         </div>
     )
