@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 router.get('/', (req, res, next) => {
     try {
-        if (req.net.sizes.length) {
+        if (req.net.sizes) {
             return res.status(200).send(req.net);
         }
        return res.status(200).send({});
@@ -11,6 +11,10 @@ router.get('/', (req, res, next) => {
         res.status(500).send('Internal server error');
     }
 })
+
+router.post('/reset', (req, res, next) => {
+    return res.status(204).send();
+});
 
 router.post('/train', (req, res, next) => {
     const { data } = req.body;
