@@ -15,6 +15,11 @@ const neuralNet = loadNet();
 server.use(express.static(PUBLIC_PATH));
 server.use(express.json());
 
+server.use('/api', (req, res, next) => {
+    req.net = neuralNet;
+    next();
+});
+
 server.use('/api', apiRouter);
 
 server.get('*', function (req, res) {
