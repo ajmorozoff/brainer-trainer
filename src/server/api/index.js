@@ -1,10 +1,7 @@
 const router = require('express').Router();
+const modelRouter = require('./model');
 
-const trainingRouter = require('./train'); 
-const runRouter = require('./run');
-
-router.use('/run', runRouter);
-router.use('/train', trainingRouter);
+router.use('/model', modelRouter);
 
 router.use('*', (req, res, next) => {
   const err = new Error('API route not found!');
