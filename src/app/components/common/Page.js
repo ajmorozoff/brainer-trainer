@@ -13,3 +13,5 @@ const Page = (props) => {
         </div>
     )
 }
+
+export default Page;

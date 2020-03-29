@@ -16,6 +16,14 @@ let neuralNet = loadNet();
 server.use(express.static(PUBLIC_PATH));
 server.use(express.json());
 
+server.use('/api/model/load', (req, res, next) => {
+    if (Object.keys(req.body.model).length) {
+        neuralNet = resetNet();
+        neuralNet.fromJSON(req.body.model);
+    }
+    next();
+});
+
 server.use('/api/model/reset', (req, res, next) => {
     neuralNet = resetNet();
     next();
