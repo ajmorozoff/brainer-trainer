@@ -1,0 +1,1 @@
+export const SET_OUTPUTS = Symbol('SET_OUTPUTS');

@@ -1,5 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import './Trainer.css';
+import AddOutput from './AddOutput';
 
 const styles = {
     display: 'flex',
@@ -12,29 +15,10 @@ const styles = {
 //
 function Trainer(props) {
     
-    const [addField, setAddField] = useState('');
     const [inputStr, setInputStr] = useState('');
-    const [outputList, setOutputList] = useState([]);
     const [selected, setSelected] = useState('');
-    const [error, setError] = useState(false);
-
-    function handleClick() {
-        const newOutput = addField.toLowerCase();
-        setError(false);
-    
-        if (outputList.includes(newOutput)) {
-            setError(true);
-            setAddField('');
-            return;
-        }
-
-        const temp = [...outputList];
-        temp.push(newOutput);
-
-        setOutputList(temp);
-        setAddField('');
-    }
-
+    const outputs = useSelector(state => state);
+ 
     return (
         <div style={styles}>
             <div>
@@ -49,7 +33,7 @@ function Trainer(props) {
             </div>
             <div>
                 {
-                    outputList.map(value => 
+                    outputs.map(value => 
                     <div
                         key={value}
                         className={selected === value ? 'selected output' : 'output'}
@@ -62,22 +46,7 @@ function Trainer(props) {
                         </button>
                     </div>)
                 }
-                <input
-                    type="text"
-                    id="new-output"
-                    value={addField}
-                    onChange={(e) => setAddField(e.target.value)}
-                />
-                {
-                    error ?
-                    <p>Outputs must be unique</p>
-                    : null
-                }
-                <button
-                    onClick={handleClick}
-                >
-                    Add Output
-                </button>
+                <AddOutput />
             </div>
             <button>Submit</button>
         </div>
