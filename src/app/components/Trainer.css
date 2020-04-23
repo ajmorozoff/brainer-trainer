@@ -1,0 +1,27 @@
+h1 {
+    margin-bottom: 2rem;
+    color: #2F3D5C;
+}
+
+.add-output-form {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem 0;
+}
+
+.outputs-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 3rem 4rem;
+}
+
+.output {
+    background-color: white;
+    margin: 0.5rem;
+}
+
+.output:hover {
+    font-weight: bold;
+}

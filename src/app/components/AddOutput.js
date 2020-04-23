@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setOutputs } from '../../redux/outputs';
+import { setOutputs } from '../redux/outputs';
+
+import Input from './styled/Input';
+import Button from './styled/Button';
 
 const AddOutput = () => {
     const [fieldStr, setFieldStr] = useState('');
@@ -20,19 +23,22 @@ const AddOutput = () => {
     }
 
     return (
-        <div>
-            <input
+        <div className='add-output-form'>
+            <Input
                 type='text'
                 id='add-net-output'
                 value={fieldStr}
                 onChange={(e) => setFieldStr(e.target.value)}
+                style={{flexGrow: 1}}
             />
-            <button
+            <Button
+                primary
                 disabled={!fieldStr}
                 onClick={handleSubmit}
+                style={{marginLeft: '1rem'}}
             >
                 Add Output
-            </button>
+            </Button>
         </div>
     )
 }
